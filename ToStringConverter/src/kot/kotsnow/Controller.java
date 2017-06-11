@@ -2,13 +2,17 @@ package kot.kotsnow;
 
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 
-public class Controller {
+public class Controller implements Initializable {
 
 	@FXML
 	TextArea beforeConvertArea;
@@ -32,10 +36,15 @@ public class Controller {
 		clipboardContent = new ClipboardContent();
 	}
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		afterConvertArea.setEditable(false);
+
+	}
+
 	public void convert(){
 		text = beforeConvertArea.getText();
 		replaceSpecialChars();
-		System.out.println(text);
 		afterConvertArea.setText(text);
 	}
 
